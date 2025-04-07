@@ -44,10 +44,10 @@ class AdminControllerTest {
         userDto = new UserDto();
         userDto.setId(1L);
         userDto.setEmail("admin@example.com");
-        userDto.setUserRole(UserRole.ADMIN); // Changed from String to UserRole enum
+        userDto.setUserRole(UserRole.ADMIN); 
     }
 
-    // ✅ Test: Get All Users
+    // Test: Get All Users
     @Test
     void getUsers_Success() {
         List<UserDto> users = Collections.singletonList(userDto);
@@ -61,7 +61,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).getUsers();
     }
 
-    // ✅ Test: Create Task - Success
+    // Test: Create Task - Success
     @Test
     void createTask_Success() {
         when(adminService.createTask(taskDto)).thenReturn(taskDto);
@@ -74,7 +74,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).createTask(taskDto);
     }
 
-    // ✅ Test: Create Task - Failure
+    // Test: Create Task - Failure
     @Test
     void createTask_Failure() {
         when(adminService.createTask(taskDto)).thenReturn(null);
@@ -86,7 +86,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).createTask(taskDto);
     }
 
-    // ✅ Test: Get All Tasks
+    // Test: Get All Tasks
     @Test
     void getAllTasks_Success() {
         List<TaskDto> tasks = Collections.singletonList(taskDto);
@@ -100,7 +100,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).getAllTasks();
     }
 
-    // ✅ Test: Delete Task
+    // Test: Delete Task
     @Test
     void deleteTask_Success() {
         doNothing().when(adminService).deleteTask(1L);
@@ -112,7 +112,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).deleteTask(1L);
     }
 
-    // ✅ Test: Get Task By ID - Success
+    // Test: Get Task By ID - Success
     @Test
     void getTaskById_Success() {
         when(adminService.getTaskById(1L)).thenReturn(taskDto);
@@ -125,7 +125,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).getTaskById(1L);
     }
 
-    // ✅ Test: Update Task - Success
+    //  Test: Update Task - Success
     @Test
     void updateTask_Success() {
         when(adminService.updateTask(1L, taskDto)).thenReturn(taskDto);
@@ -138,7 +138,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).updateTask(1L, taskDto);
     }
 
-    // ✅ Test: Update Task - Not Found
+    // Test: Update Task - Not Found
     @Test
     void updateTask_NotFound() {
         when(adminService.updateTask(1L, taskDto)).thenReturn(null);
@@ -150,7 +150,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).updateTask(1L, taskDto);
     }
 
-    // ✅ Test: Search Tasks By Title
+    // Test: Search Tasks By Title
     @Test
     void searchTasksByTitle_Success() {
         List<TaskDto> tasks = Collections.singletonList(taskDto);
@@ -164,7 +164,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).searchTasksByTitle("Test");
     }
 
-    // ✅ Test: Filter By Status
+    // Test: Filter By Status
     @Test
     void filterByStatus_Success() {
         List<TaskDto> tasks = Collections.singletonList(taskDto);
@@ -178,7 +178,7 @@ class AdminControllerTest {
         verify(adminService, times(1)).filterTasksByStatus(TaskStatus.PENDING);
     }
 
-    // ✅ Test: Filter By Priority
+    //  Test: Filter By Priority
     @Test
     void filterByPriority_Success() {
         List<TaskDto> tasks = Collections.singletonList(taskDto);
