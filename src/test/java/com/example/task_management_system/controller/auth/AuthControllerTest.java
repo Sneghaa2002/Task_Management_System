@@ -103,7 +103,7 @@ class AuthControllerTest {
         verify(authService, never()).signupUser(any());
     }
 
-    /*@Test
+    @Test
     void login_UserNotFound() {
         // Mock authentication
         Authentication authentication = mock(Authentication.class);
@@ -132,9 +132,9 @@ class AuthControllerTest {
 
         verify(authenticationManager, times(1)).authenticate(any());
         verify(jwtUtil, times(1)).generateToken(userDetails);
-    }*/
+    }
 
-   /* @Test
+   @Test
     void login_Success(){
         when(authenticationManager.authenticate(any())).thenReturn(mock(Authentication.class));
         when(userService.userDetailService().loadUserByUsername(authRequest.getEmail()))
@@ -142,10 +142,10 @@ class AuthControllerTest {
         when(userRepository.findByEmail(authRequest.getEmail())).thenReturn(Optional.empty());
 
         assertThrows(RuntimeException.class, () -> authController.login(authRequest));
-    }*/
+    }
 
     @Test
-    void login_Success() {
+    void login_Not_Success() {
         when(authenticationManager.authenticate(any()))
                 .thenThrow(new RuntimeException("Bad credentials"));
 
