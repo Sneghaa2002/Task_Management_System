@@ -83,11 +83,11 @@ class EmployeeServiceImplTest {
         verify(taskRepository, never()).save(any());
     }
 
-    /*@Test
+    @Test
     void updateTask_ShouldThrowWhenInvalidStatus() {
         when(taskRepository.findById(1L)).thenReturn(Optional.of(task));
 
         assertThrows(IllegalArgumentException.class, () -> employeeService.updateTask(1L, "INVALID_STATUS"));
         verify(taskRepository, never()).save(any());
-    }*/
+    }
 }
