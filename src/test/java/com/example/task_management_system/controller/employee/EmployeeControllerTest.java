@@ -45,8 +45,6 @@ class EmployeeControllerTest {
         Long userId = 1L;
         List<TaskDto> tasks = Arrays.asList(taskDto);
         when(employeeService.getTasksByUserId(userId)).thenReturn(tasks);
-
-        // Act
         ResponseEntity<List<TaskDto>> response = employeeController.getTasksByUserId(userId);
 
         // Assert
@@ -62,8 +60,6 @@ class EmployeeControllerTest {
         Long taskId = 1L;
         String newStatus = "COMPLETED";
         when(employeeService.updateTask(taskId, newStatus)).thenReturn(taskDto);
-
-        // Act
         ResponseEntity<TaskDto> response = employeeController.updateTaskStatus(taskId, newStatus);
 
         // Assert
@@ -73,19 +69,19 @@ class EmployeeControllerTest {
         verify(employeeService, times(1)).updateTask(taskId, newStatus);
     }
 
-    /*@Test
+    @Test
     void updateTaskStatus_InvalidStatus() {
         // Arrange
         Long taskId = 1L;
         String invalidStatus = "INVALID_STATUS";
 
-        // Act & Assert
+
         assertThrows(IllegalArgumentException.class, () -> {
             employeeController.updateTaskStatus(taskId, invalidStatus);
         });
 
         verify(employeeService, never()).updateTask(any(), any());
-    }*/
+    }
 
     @Test
     void updateTaskStatus_PendingToCompleted() {
@@ -98,7 +94,7 @@ class EmployeeControllerTest {
 
         when(employeeService.updateTask(taskId, newStatus)).thenReturn(completedTask);
 
-        // Act
+        
         ResponseEntity<TaskDto> response = employeeController.updateTaskStatus(taskId, newStatus);
 
         // Assert
@@ -118,8 +114,6 @@ class EmployeeControllerTest {
         pendingTask.setTaskStatus(TaskStatus.PENDING);
 
         when(employeeService.updateTask(taskId, newStatus)).thenReturn(pendingTask);
-
-        // Act
         ResponseEntity<TaskDto> response = employeeController.updateTaskStatus(taskId, newStatus);
 
         // Assert
