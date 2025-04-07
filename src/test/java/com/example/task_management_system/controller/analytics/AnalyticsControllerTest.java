@@ -58,7 +58,7 @@ class AnalyticsControllerTest {
         when(analyticsService.getAverageCompletionTime(testUser.getId()))
                 .thenReturn(Optional.of(12.5));
 
-        // Act
+       
         ResponseEntity<Map<String, Object>> response = analyticsController.getAnalytics();
 
         // Assert
@@ -82,7 +82,7 @@ class AnalyticsControllerTest {
         // Arrange
         when(jwtUtil.getLoggedInUser()).thenReturn(null);
 
-        // Act
+       
         ResponseEntity<Map<String, Object>> response = analyticsController.getAnalytics();
 
         // Assert
@@ -107,10 +107,10 @@ class AnalyticsControllerTest {
         when(analyticsService.getAverageCompletionTime(testUser.getId()))
                 .thenReturn(Optional.empty());
 
-        // Act
+        
         ResponseEntity<Map<String, Object>> response = analyticsController.getAnalytics();
 
-        // Assert
+        // assert
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotNull(response.getBody());
@@ -123,7 +123,7 @@ class AnalyticsControllerTest {
 
     @Test
     void getAnalytics_EmptyWeeklyTrends() {
-        // Arrange
+        // arrange
         Map<String, Object> analyticsWithEmptyTrends = new HashMap<>(testAnalytics);
         analyticsWithEmptyTrends.put("weeklyTrends", Map.of());
 
@@ -135,7 +135,7 @@ class AnalyticsControllerTest {
         when(analyticsService.getAverageCompletionTime(testUser.getId()))
                 .thenReturn(Optional.empty());
 
-        // Act
+        
         ResponseEntity<Map<String, Object>> response = analyticsController.getAnalytics();
 
         // Assert
