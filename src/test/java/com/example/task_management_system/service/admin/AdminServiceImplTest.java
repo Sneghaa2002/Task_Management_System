@@ -181,7 +181,7 @@ class AdminServiceImplTest {
         verify(taskRepository, times(1)).findById(1L);
     }
 
-    /*@Test
+    @Test
     @Transactional
     void updateTask_ShouldUpdateTaskSuccessfully() {
         // Arrange
@@ -203,15 +203,13 @@ class AdminServiceImplTest {
         verify(taskRepository, times(1)).findById(1L);
         verify(taskRepository, times(1)).save(task);
         verify(notificationService, times(1)).createInAppNotification(eq(employee), anyString());
-    }*/
+    }
 
     @Test
     void searchTasksByTitle_ShouldReturnMatchingTasks() {
         // Arrange
         when(taskRepository.findByTitleContainingIgnoreCase("project"))
                 .thenReturn(Collections.singletonList(task));
-
-        // Act
         List<TaskDto> result = adminService.searchTasksByTitle("project");
 
         // Assert
@@ -222,7 +220,6 @@ class AdminServiceImplTest {
 
     @Test
     void searchTasksByTitle_ShouldReturnEmptyListForEmptySearch() {
-        // Act
         List<TaskDto> result = adminService.searchTasksByTitle("");
 
         // Assert
