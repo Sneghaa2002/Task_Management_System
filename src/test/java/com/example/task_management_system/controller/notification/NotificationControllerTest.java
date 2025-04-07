@@ -65,7 +65,6 @@ class NotificationControllerTest {
         when(jwtUtil.getLoggedInUser()).thenReturn(testUser);
         when(notificationService.getUserNotifications(testUser.getId())).thenReturn(testNotifications);
 
-        // Act
         ResponseEntity<List<Notification>> response = notificationController.getUserNotifications();
 
         // Assert
@@ -82,7 +81,6 @@ class NotificationControllerTest {
         when(jwtUtil.getLoggedInUser()).thenReturn(testUser);
         when(notificationService.getUserNotifications(testUser.getId())).thenReturn(List.of());
 
-        // Act
         ResponseEntity<List<Notification>> response = notificationController.getUserNotifications();
 
         // Assert
